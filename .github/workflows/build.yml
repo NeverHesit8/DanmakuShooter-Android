@@ -7,14 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - uses: android-actions/setup-android@v3
 
       - name: 生成临时 keystore 和 local.properties
         run: |
@@ -27,7 +25,7 @@ jobs:
           EOF
 
       - name: 构建 Release APK
-        run: ./gradlew assembleRelease
+        run: chmod +x gradlew && ./gradlew assembleRelease
 
       - name: 上传 APK
         uses: actions/upload-artifact@v4
