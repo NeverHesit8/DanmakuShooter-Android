@@ -16,7 +16,7 @@ jobs:
 
       - name: 生成临时 keystore 和 local.properties
         run: |
-          keytool -genkey -v -keystore ci-key.jks -keyalg RSA -keysize 2048 -validity 365 -alias cikey -storepass android -keypass android -dname "CN=CI"
+          keytool -genkey -v -keystore app/ci-key.jks -keyalg RSA -keysize 2048 -validity 365 -alias cikey -storepass android -keypass android -dname "CN=CI"
           cat > local.properties <<EOF
           storeFile=ci-key.jks
           storePassword=android
